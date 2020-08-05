@@ -13,6 +13,7 @@
     "@types/react-dom": "16.9.8",
     "antd": "4.5.2",
     "craco-antd": "1.18.1",
+    "liquid-loading": "1.0.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-scripts": "3.4.1",
