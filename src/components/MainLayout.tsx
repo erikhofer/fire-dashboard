@@ -6,11 +6,13 @@ import {
   FlagOutlined
 } from '@ant-design/icons'
 import { LiabilityIcon, AssetIcon, IncomeIcon, ExpenseIcon } from './Icons'
+import { Link, useLocation } from 'react-router-dom'
 
 const { Header, Content, Footer, Sider } = Layout
 
 export const MainLayout: React.FC = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false)
+  const location = useLocation()
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -22,27 +24,31 @@ export const MainLayout: React.FC = ({ children }) => {
             margin: 16
           }}
         />
-        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+        <Menu
+          theme="dark"
+          defaultSelectedKeys={[location.pathname]}
+          mode="inline"
+        >
           <Menu.Item key="/" icon={<DashboardOutlined />}>
-            Dashboard
+            <Link to="/">Dashboard</Link>
           </Menu.Item>
           <Menu.Item key="/assets" icon={<AssetIcon />}>
-            Assets
+            <Link to="/assets">Assets</Link>
           </Menu.Item>
           <Menu.Item key="/liabilities" icon={<LiabilityIcon />}>
-            Liabilities
+            <Link to="/liabilities">Liabilities</Link>
           </Menu.Item>
           <Menu.Item key="/incomes" icon={<IncomeIcon />}>
-            Income
+            <Link to="/incomes">Income</Link>
           </Menu.Item>
           <Menu.Item key="/expenses" icon={<ExpenseIcon />}>
-            Expenses
+            <Link to="/expenses">Expenses</Link>
           </Menu.Item>
           <Menu.Item key="/goals" icon={<FlagOutlined />}>
-            Goals
+            <Link to="/goals">Goals</Link>
           </Menu.Item>
           <Menu.Item key="/settings" icon={<SettingOutlined />}>
-            Settings
+            <Link to="/settings">Settings</Link>
           </Menu.Item>
         </Menu>
       </Sider>
