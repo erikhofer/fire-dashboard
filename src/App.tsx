@@ -1,12 +1,13 @@
 import React from 'react'
-import { Button } from 'antd'
 import './App.css'
+import { MainLayout } from './components/MainLayout'
+import { Dashboard } from './pages/Dashboard'
 
 function App() {
   return (
-    <div className="App">
-      <Button>Test</Button>
-    </div>
+    <MainLayout>
+      <Dashboard></Dashboard>
+    </MainLayout>
   )
 }
 
