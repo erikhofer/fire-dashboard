@@ -1,1 +1,5 @@
 @import '~antd/dist/antd.css';
+
+.no-padding .ant-card-body {
+  padding: 0;
+}

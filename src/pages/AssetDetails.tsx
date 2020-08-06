@@ -13,12 +13,11 @@ import {
   Result,
   Space
 } from 'antd'
-import { NewEntity, Asset } from '../store/model'
 import { useDispatch } from 'react-redux'
-import { Store } from 'antd/lib/form/interface'
 import { createAsset, updateAsset } from '../store/actions'
 import { SaveOutlined } from '@ant-design/icons'
 import { useAsset } from '../hooks/useAsset'
+import { ValueHistory } from '../components/ValueHistory'
 
 const layout = {
   labelCol: { span: 4 },
@@ -56,8 +55,8 @@ export const AssetDetails: React.FC = () => {
   }
 
   return (
-    <Page title={'Create Asset'}>
-      <Row>
+    <Page title={asset?.name ?? 'Create Asset'}>
+      <Row gutter={16}>
         <Col span={12}>
           <Card title="Properties">
             <Form
@@ -97,6 +96,9 @@ export const AssetDetails: React.FC = () => {
               </Form.Item>
             </Form>
           </Card>
+        </Col>
+        <Col span={12}>
+          <ValueHistory history={asset?.history}></ValueHistory>
         </Col>
       </Row>
     </Page>

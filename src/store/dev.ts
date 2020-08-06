@@ -7,7 +7,7 @@ export const initalState: AppState = {
       id: 'asset1',
       name: 'Sample Asset 1',
       currentValue: 1337,
-      history: [{ value: 42, date: moment().toISOString() }]
+      history: [{ value: 1337, date: moment().toISOString() }]
     }
   ]
 }

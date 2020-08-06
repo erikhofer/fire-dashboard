@@ -6,23 +6,25 @@ import { Link } from 'react-router-dom'
 import { useAssets } from '../hooks/useAssets'
 import { PlusOutlined } from '@ant-design/icons'
 
+const columns = [
+  {
+    title: 'Name',
+    dataIndex: 'name',
+    key: 'name',
+    render: (text: string, record: Entity) => (
+      <Link to={`/assets/${record.id}`}>{text}</Link>
+    )
+  },
+  {
+    title: 'Value',
+    dataIndex: 'currentValue',
+    key: 'currentValue'
+  }
+]
+
 export const Assets: React.FC = () => {
   const assets = useAssets()
-  const columns = [
-    {
-      title: 'Name',
-      dataIndex: 'name',
-      key: 'name',
-      render: (text: string, record: Entity) => (
-        <Link to={`/assets/${record.id}`}>{text}</Link>
-      )
-    },
-    {
-      title: 'Value',
-      dataIndex: 'currentValue',
-      key: 'currentValue'
-    }
-  ]
+
   return (
     <Page title="Assets">
       <p>
