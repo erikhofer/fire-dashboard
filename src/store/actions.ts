@@ -1,5 +1,5 @@
 import { createAction } from 'typesafe-actions'
-import { Asset, NewEntity, Entity } from './model'
+import { Asset } from './model'
 import moment from 'moment'
 import { v4 as uuid } from 'uuid'
 

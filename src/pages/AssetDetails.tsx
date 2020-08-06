@@ -45,7 +45,7 @@ export const AssetDetails: React.FC = () => {
         message.success('Asset updated')
       }
     },
-    [dispatch, asset]
+    [dispatch, asset, history]
   )
 
   const reset = useCallback(() => form.resetFields(), [form])
