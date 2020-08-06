@@ -1,16 +1,16 @@
 import React from 'react'
 import { Page } from '../components/Page'
-import { Entity } from '../store/model'
-import { Button, Table, Space } from 'antd'
+import { Entity, Asset } from '../store/model'
+import { Button, Table } from 'antd'
 import { Link } from 'react-router-dom'
 import { useAssets } from '../hooks/useAssets'
 import { PlusOutlined } from '@ant-design/icons'
+import { ColumnsType } from 'antd/lib/table'
 
-const columns = [
+const columns: ColumnsType<Asset> = [
   {
     title: 'Name',
     dataIndex: 'name',
-    key: 'name',
     render: (text: string, record: Entity) => (
       <Link to={`/assets/${record.id}`}>{text}</Link>
     )
@@ -18,7 +18,7 @@ const columns = [
   {
     title: 'Value',
     dataIndex: 'currentValue',
-    key: 'currentValue'
+    align: 'right'
   }
 ]
 

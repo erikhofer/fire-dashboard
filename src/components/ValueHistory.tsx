@@ -2,17 +2,17 @@ import React from 'react'
 import { HistoryItem } from '../store/model'
 import { Table, Card } from 'antd'
 import { renderDate } from '../utils/date'
+import { ColumnsType } from 'antd/lib/table'
 
-const columns = [
+const columns: ColumnsType<HistoryItem> = [
   {
     title: 'Value',
     dataIndex: 'value',
-    key: 'value'
+    align: 'right'
   },
   {
     title: 'Date',
     dataIndex: 'date',
-    key: 'date',
     render: renderDate
   }
 ]

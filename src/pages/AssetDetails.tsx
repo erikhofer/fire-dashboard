@@ -97,9 +97,11 @@ export const AssetDetails: React.FC = () => {
             </Form>
           </Card>
         </Col>
-        <Col span={12}>
-          <ValueHistory history={asset?.history}></ValueHistory>
-        </Col>
+        {asset && (
+          <Col span={12}>
+            <ValueHistory history={asset.history}></ValueHistory>
+          </Col>
+        )}
       </Row>
     </Page>
   )

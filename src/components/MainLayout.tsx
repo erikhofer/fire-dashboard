@@ -13,6 +13,7 @@ const { Header, Content, Footer, Sider } = Layout
 export const MainLayout: React.FC = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false)
   const location = useLocation()
+  const basePath = '/' + location.pathname.split('/')[1]
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -24,11 +25,7 @@ export const MainLayout: React.FC = ({ children }) => {
             margin: 16
           }}
         />
-        <Menu
-          theme="dark"
-          defaultSelectedKeys={[location.pathname]}
-          mode="inline"
-        >
+        <Menu theme="dark" defaultSelectedKeys={[basePath]} mode="inline">
           <Menu.Item key="/" icon={<DashboardOutlined />}>
             <Link to="/">Dashboard</Link>
           </Menu.Item>
