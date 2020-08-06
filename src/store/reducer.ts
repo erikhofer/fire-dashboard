@@ -1,7 +1,6 @@
 import { produce } from 'immer'
 import { combineReducers } from 'redux'
 import { ActionType, getType } from 'typesafe-actions'
-
 import * as actions from './actions'
 import { AppState, Asset } from './model'
 

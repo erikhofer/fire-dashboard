@@ -1,12 +1,24 @@
 import React, { useCallback } from 'react'
 import { Page } from '../components/Page'
 import { useParams, useHistory } from 'react-router-dom'
-import { Card, Form, Input, Button, Col, Row, InputNumber, message } from 'antd'
+import {
+  Card,
+  Form,
+  Input,
+  Button,
+  Col,
+  Row,
+  InputNumber,
+  message,
+  Result,
+  Space
+} from 'antd'
 import { NewEntity, Asset } from '../store/model'
 import { useDispatch } from 'react-redux'
 import { Store } from 'antd/lib/form/interface'
-import { createAsset } from '../store/actions'
+import { createAsset, updateAsset } from '../store/actions'
 import { SaveOutlined } from '@ant-design/icons'
+import { useAsset } from '../hooks/useAsset'
 
 const layout = {
   labelCol: { span: 4 },
@@ -19,18 +31,29 @@ const tailLayout = {
 export const AssetDetails: React.FC = () => {
   const history = useHistory()
   const { id } = useParams()
+  const asset = useAsset(id)
   const dispatch = useDispatch()
-
-  const create = id === 'create'
+  const [form] = Form.useForm()
 
   const save = useCallback(
-    (values: Store) => {
-      dispatch(createAsset(values as NewEntity<Asset>))
-      history.replace('/assets')
-      message.success('Asset created')
+    (values: any) => {
+      if (asset === undefined) {
+        dispatch(createAsset(values))
+        history.replace('/assets')
+        message.success('Asset created')
+      } else {
+        dispatch(updateAsset({ ...asset, ...values }))
+        message.success('Asset updated')
+      }
     },
-    [dispatch]
+    [dispatch, asset]
   )
+
+  const reset = useCallback(() => form.resetFields(), [form])
+
+  if (asset === undefined && id !== 'create') {
+    return <Result status="404" title="Asset not found" />
+  }
 
   return (
     <Page title={'Create Asset'}>
@@ -39,8 +62,9 @@ export const AssetDetails: React.FC = () => {
           <Card title="Properties">
             <Form
               {...layout}
+              form={form}
               name="asset"
-              initialValues={{ remember: true }}
+              initialValues={asset}
               onFinish={save}
             >
               <Form.Item
@@ -48,7 +72,7 @@ export const AssetDetails: React.FC = () => {
                 name="name"
                 rules={[{ required: true, message: 'Please input a name!' }]}
               >
-                <Input autoFocus={create} />
+                <Input autoFocus={asset === undefined} />
               </Form.Item>
 
               <Form.Item
@@ -60,13 +84,16 @@ export const AssetDetails: React.FC = () => {
               </Form.Item>
 
               <Form.Item {...tailLayout}>
-                <Button
-                  type="primary"
-                  htmlType="submit"
-                  icon={<SaveOutlined></SaveOutlined>}
-                >
-                  Save
-                </Button>
+                <Space>
+                  <Button
+                    type="primary"
+                    htmlType="submit"
+                    icon={<SaveOutlined></SaveOutlined>}
+                  >
+                    Save
+                  </Button>
+                  <Button onClick={reset}>Reset</Button>
+                </Space>
               </Form.Item>
             </Form>
           </Card>

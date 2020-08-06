@@ -9,9 +9,11 @@ import { Provider } from 'react-redux'
 import { AppState } from './store/model'
 import { AppAction, reducer } from './store/reducer'
 import { composeWithDevTools } from 'redux-devtools-extension'
+import { initalState } from './store/dev'
 
 const store: Store<AppState, AppAction> = createStore(
   reducer,
+  initalState,
   composeWithDevTools(applyMiddleware())
 )
 
