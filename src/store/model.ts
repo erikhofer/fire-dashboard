@@ -2,7 +2,7 @@ export interface AppState {
   assets: Asset[]
 }
 
-export interface BalanceItem {
+export interface Entity {
   id: string
   name: string
   history: HistoryItem[]
@@ -14,4 +14,6 @@ export interface HistoryItem {
   date: string
 }
 
-export interface Asset extends BalanceItem {}
+export type NewEntity<T extends Entity> = Omit<T, 'id' | 'history'>
+
+export interface Asset extends Entity {}

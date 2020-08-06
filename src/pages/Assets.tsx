@@ -1,20 +1,17 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import { Page } from '../components/Page'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { AppState, Asset } from '../store/model'
-import { createAsset } from '../store/actions'
 import { Button } from 'antd'
+import { Link } from 'react-router-dom'
 
 export const Assets: React.FC = () => {
   const assets = useSelector<AppState, Asset[]>(state => state.assets)
-  const dispatch = useDispatch()
-  const onCreate = useCallback(
-    () => dispatch(createAsset({ name: 'Foo' } as Asset)),
-    [dispatch]
-  )
   return (
     <Page title="Assets">
-      <Button onClick={onCreate}>Create</Button>
+      <Link to="/assets/create">
+        <Button>Create</Button>
+      </Link>
       {assets.map(asset => (
         <p>{asset.name}</p>
       ))}
