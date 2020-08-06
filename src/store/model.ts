@@ -1,3 +1,7 @@
+export interface AppState {
+  assets: Asset[]
+}
+
 export interface BalanceItem {
   id: string
   name: string
@@ -9,3 +13,5 @@ export interface HistoryItem {
   value: number
   date: string
 }
+
+export interface Asset extends BalanceItem {}
