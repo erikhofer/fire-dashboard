@@ -21,6 +21,8 @@ export const AssetDetails: React.FC = () => {
   const { id } = useParams()
   const dispatch = useDispatch()
 
+  const create = id === 'create'
+
   const save = useCallback(
     (values: Store) => {
       dispatch(createAsset(values as NewEntity<Asset>))
@@ -34,7 +36,7 @@ export const AssetDetails: React.FC = () => {
     <Page title={'Create Asset'}>
       <Row>
         <Col span={12}>
-          <Card>
+          <Card title="Properties">
             <Form
               {...layout}
               name="asset"
@@ -46,7 +48,7 @@ export const AssetDetails: React.FC = () => {
                 name="name"
                 rules={[{ required: true, message: 'Please input a name!' }]}
               >
-                <Input />
+                <Input autoFocus={create} />
               </Form.Item>
 
               <Form.Item

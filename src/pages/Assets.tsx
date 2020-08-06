@@ -1,20 +1,42 @@
 import React from 'react'
 import { Page } from '../components/Page'
-import { useSelector } from 'react-redux'
-import { AppState, Asset } from '../store/model'
-import { Button } from 'antd'
+import { Entity } from '../store/model'
+import { Button, Table, Space } from 'antd'
 import { Link } from 'react-router-dom'
+import { useAssets } from '../hooks/useAssets'
+import { PlusOutlined } from '@ant-design/icons'
 
 export const Assets: React.FC = () => {
-  const assets = useSelector<AppState, Asset[]>(state => state.assets)
+  const assets = useAssets()
+  const columns = [
+    {
+      title: 'Name',
+      dataIndex: 'name',
+      key: 'name',
+      render: (text: string, record: Entity) => (
+        <Link to={`/assets/${record.id}`}>{text}</Link>
+      )
+    },
+    {
+      title: 'Value',
+      dataIndex: 'currentValue',
+      key: 'currentValue'
+    }
+  ]
   return (
     <Page title="Assets">
-      <Link to="/assets/create">
-        <Button>Create</Button>
-      </Link>
-      {assets.map(asset => (
-        <p>{asset.name}</p>
-      ))}
+      <p>
+        <Link to="/assets/create">
+          <Button
+            block
+            type={assets.length === 0 ? 'primary' : 'dashed'}
+            icon={<PlusOutlined />}
+          >
+            Add Asset
+          </Button>
+        </Link>
+      </p>
+      <Table columns={columns} dataSource={assets} pagination={false} />
     </Page>
   )
 }
