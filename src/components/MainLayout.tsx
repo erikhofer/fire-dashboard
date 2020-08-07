@@ -60,8 +60,16 @@ export const MainLayout: React.FC = ({ children }) => {
         />
         <Content style={{ marginTop: 64 }}>{children}</Content>
         <Footer style={{ textAlign: 'center' }}>
-          FIRE Dashboard 0.0.0 <Divider type="vertical" /> About{' '}
-          <Divider type="vertical" /> Made with ❤ by the open-source community
+          FIRE Dashboard 0.0.0 <Divider type="vertical" />
+          <Link to="/about">About</Link>
+          <Divider type="vertical" /> Made with ❤ free and{' '}
+          <a
+            href="https://github.com/erikhofer/fire-dashboard"
+            target="blank"
+            rel="noopener"
+          >
+            open source
+          </a>
         </Footer>
       </Layout>
     </Layout>

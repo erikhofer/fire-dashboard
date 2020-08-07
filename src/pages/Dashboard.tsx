@@ -1,6 +1,10 @@
 import React from 'react'
-import { Page } from '../components/Page'
+import { PageHeader } from '../components/PageHeader'
 
 export const Dashboard: React.FC = () => {
-  return <Page title="Dashboard"></Page>
+  return (
+    <>
+      <PageHeader title="Dashboard"></PageHeader>
+    </>
+  )
 }

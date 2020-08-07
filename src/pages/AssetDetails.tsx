@@ -1,5 +1,4 @@
 import React, { useCallback } from 'react'
-import { Page } from '../components/Page'
 import { useParams, useHistory } from 'react-router-dom'
 import {
   Card,
@@ -18,6 +17,9 @@ import { createAsset, updateAsset } from '../store/actions'
 import { SaveOutlined } from '@ant-design/icons'
 import { useAsset } from '../hooks/useAsset'
 import { ValueHistory } from '../components/ValueHistory'
+import { PageContent } from '../components/PageContent'
+import { PageHeader } from '../components/PageHeader'
+import { createBreadcrumb } from '../utils/breadcrumb'
 
 const layout = {
   labelCol: { span: 4 },
@@ -54,55 +56,66 @@ export const AssetDetails: React.FC = () => {
     return <Result status="404" title="Asset not found" />
   }
 
+  const title = asset?.name ?? 'Create Asset'
+
   return (
-    <Page title={asset?.name ?? 'Create Asset'}>
-      <Row gutter={16}>
-        <Col span={12}>
-          <Card title="Properties">
-            <Form
-              {...layout}
-              form={form}
-              name="asset"
-              initialValues={asset}
-              onFinish={save}
-            >
-              <Form.Item
-                label="Name"
-                name="name"
-                rules={[{ required: true, message: 'Please input a name!' }]}
-              >
-                <Input autoFocus={asset === undefined} />
-              </Form.Item>
-
-              <Form.Item
-                label="Value"
-                name="currentValue"
-                rules={[{ required: true, message: 'Please input a value!' }]}
-              >
-                <InputNumber min={0}></InputNumber>
-              </Form.Item>
-
-              <Form.Item {...tailLayout}>
-                <Space>
-                  <Button
-                    type="primary"
-                    htmlType="submit"
-                    icon={<SaveOutlined></SaveOutlined>}
-                  >
-                    Save
-                  </Button>
-                  <Button onClick={reset}>Reset</Button>
-                </Space>
-              </Form.Item>
-            </Form>
-          </Card>
-        </Col>
-        {asset && (
+    <>
+      <PageHeader
+        title={title}
+        breadcrumb={createBreadcrumb([
+          { path: '/assets', breadcrumbName: 'Assets' },
+          { path: id, breadcrumbName: title }
+        ])}
+      />
+      <PageContent>
+        <Row gutter={16}>
           <Col span={12}>
-            <ValueHistory history={asset.history}></ValueHistory>
+            <Card title="Properties">
+              <Form
+                {...layout}
+                form={form}
+                name="asset"
+                initialValues={asset}
+                onFinish={save}
+              >
+                <Form.Item
+                  label="Name"
+                  name="name"
+                  rules={[{ required: true, message: 'Please input a name!' }]}
+                >
+                  <Input autoFocus={asset === undefined} />
+                </Form.Item>
+
+                <Form.Item
+                  label="Value"
+                  name="currentValue"
+                  rules={[{ required: true, message: 'Please input a value!' }]}
+                >
+                  <InputNumber min={0}></InputNumber>
+                </Form.Item>
+
+                <Form.Item {...tailLayout}>
+                  <Space>
+                    <Button
+                      type="primary"
+                      htmlType="submit"
+                      icon={<SaveOutlined></SaveOutlined>}
+                    >
+                      Save
+                    </Button>
+                    <Button onClick={reset}>Reset</Button>
+                  </Space>
+                </Form.Item>
+              </Form>
+            </Card>
           </Col>
-        )}
-      </Row>
-    </Page>
+          {asset && (
+            <Col span={12}>
+              <ValueHistory history={asset.history}></ValueHistory>
+            </Col>
+          )}
+        </Row>
+      </PageContent>
+    </>
   )
 }

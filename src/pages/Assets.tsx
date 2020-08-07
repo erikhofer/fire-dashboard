@@ -1,11 +1,12 @@
 import React from 'react'
-import { Page } from '../components/Page'
 import { Entity, Asset } from '../store/model'
 import { Button, Table } from 'antd'
 import { Link } from 'react-router-dom'
 import { useAssets } from '../hooks/useAssets'
 import { PlusOutlined } from '@ant-design/icons'
 import { ColumnsType } from 'antd/lib/table'
+import { PageHeader } from '../components/PageHeader'
+import { PageContent } from '../components/PageContent'
 
 const columns: ColumnsType<Asset> = [
   {
@@ -26,19 +27,22 @@ export const Assets: React.FC = () => {
   const assets = useAssets()
 
   return (
-    <Page title="Assets">
-      <p>
-        <Link to="/assets/create">
-          <Button
-            block
-            type={assets.length === 0 ? 'primary' : 'dashed'}
-            icon={<PlusOutlined />}
-          >
-            Add Asset
-          </Button>
-        </Link>
-      </p>
-      <Table columns={columns} dataSource={assets} pagination={false} />
-    </Page>
+    <>
+      <PageHeader title="Assets" />
+      <PageContent>
+        <p>
+          <Link to="/assets/create">
+            <Button
+              block
+              type={assets.length === 0 ? 'primary' : 'dashed'}
+              icon={<PlusOutlined />}
+            >
+              Add Asset
+            </Button>
+          </Link>
+        </p>
+        <Table columns={columns} dataSource={assets} pagination={false} />
+      </PageContent>
+    </>
   )
 }
