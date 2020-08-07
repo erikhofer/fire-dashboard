@@ -16,4 +16,6 @@ export interface HistoryItem {
 
 export type NewEntity<T extends Entity> = Omit<T, 'id' | 'history'>
 
-export interface Asset extends Entity {}
+export interface Asset extends Entity {
+  isEmergencyFund: boolean
+}

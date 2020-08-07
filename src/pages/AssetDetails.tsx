@@ -10,7 +10,8 @@ import {
   InputNumber,
   message,
   Result,
-  Space
+  Space,
+  Switch
 } from 'antd'
 import { useDispatch } from 'react-redux'
 import { createAsset, updateAsset } from '../store/actions'
@@ -20,6 +21,7 @@ import { ValueHistory } from '../components/ValueHistory'
 import { PageContent } from '../components/PageContent'
 import { PageHeader } from '../components/PageHeader'
 import { createBreadcrumb } from '../utils/breadcrumb'
+import { positiveNumber } from '../utils/validation'
 
 const layout = {
   labelCol: { span: 4 },
@@ -27,6 +29,10 @@ const layout = {
 }
 const tailLayout = {
   wrapperCol: { offset: 4, span: 16 }
+}
+
+const initialAsset = {
+  isEmergencyFund: false
 }
 
 export const AssetDetails: React.FC = () => {
@@ -38,6 +44,7 @@ export const AssetDetails: React.FC = () => {
 
   const save = useCallback(
     (values: any) => {
+      console.log(values)
       if (asset === undefined) {
         dispatch(createAsset(values))
         history.replace('/assets')
@@ -75,7 +82,7 @@ export const AssetDetails: React.FC = () => {
                 {...layout}
                 form={form}
                 name="asset"
-                initialValues={asset}
+                initialValues={asset ?? initialAsset}
                 onFinish={save}
               >
                 <Form.Item
@@ -85,15 +92,27 @@ export const AssetDetails: React.FC = () => {
                 >
                   <Input autoFocus={asset === undefined} />
                 </Form.Item>
-
                 <Form.Item
                   label="Value"
                   name="currentValue"
-                  rules={[{ required: true, message: 'Please input a value!' }]}
+                  rules={[
+                    { required: true, message: 'Please input a value!' },
+                    { type: 'number' },
+                    {
+                      validator: positiveNumber,
+                      message: 'Assets must have positive value!'
+                    }
+                  ]}
                 >
-                  <InputNumber min={0}></InputNumber>
+                  <InputNumber></InputNumber>
                 </Form.Item>
-
+                <Form.Item
+                  label="Emergency Fund"
+                  name="isEmergencyFund"
+                  valuePropName="checked"
+                >
+                  <Switch />
+                </Form.Item>
                 <Form.Item {...tailLayout}>
                   <Space>
                     <Button

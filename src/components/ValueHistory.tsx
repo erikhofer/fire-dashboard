@@ -21,6 +21,7 @@ export const ValueHistory: React.FC<{ history?: HistoryItem[] }> = props => {
   return (
     <Card title="History" className="no-padding">
       <Table
+        rowKey="date"
         columns={columns}
         dataSource={props.history}
         pagination={{ hideOnSinglePage: true }}

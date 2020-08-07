@@ -1,6 +1,6 @@
 import React from 'react'
-import { Entity, Asset } from '../store/model'
-import { Button, Table } from 'antd'
+import { Asset } from '../store/model'
+import { Button, Table, Tag } from 'antd'
 import { Link } from 'react-router-dom'
 import { useAssets } from '../hooks/useAssets'
 import { PlusOutlined } from '@ant-design/icons'
@@ -12,8 +12,11 @@ const columns: ColumnsType<Asset> = [
   {
     title: 'Name',
     dataIndex: 'name',
-    render: (text: string, record: Entity) => (
-      <Link to={`/assets/${record.id}`}>{text}</Link>
+    render: (text: string, asset: Asset) => (
+      <>
+        <Link to={`/assets/${asset.id}`}>{text}</Link>{' '}
+        {asset.isEmergencyFund && <Tag color="green">Emergency Fund</Tag>}
+      </>
     )
   },
   {
@@ -28,20 +31,23 @@ export const Assets: React.FC = () => {
 
   return (
     <>
-      <PageHeader title="Assets" />
-      <PageContent>
-        <p>
-          <Link to="/assets/create">
-            <Button
-              block
-              type={assets.length === 0 ? 'primary' : 'dashed'}
-              icon={<PlusOutlined />}
-            >
+      <PageHeader
+        title="Assets"
+        extra={[
+          <Link key="1" to="/assets/create">
+            <Button type="primary" icon={<PlusOutlined />}>
               Add Asset
             </Button>
           </Link>
-        </p>
-        <Table columns={columns} dataSource={assets} pagination={false} />
+        ]}
+      />
+      <PageContent>
+        <Table
+          rowKey="id"
+          columns={columns}
+          dataSource={assets}
+          pagination={false}
+        />
       </PageContent>
     </>
   )
