@@ -25,7 +25,7 @@ export const MainLayout: React.FC = ({ children }) => {
             margin: 16
           }}
         />
-        <Menu theme="dark" defaultSelectedKeys={[basePath]} mode="inline">
+        <Menu theme="dark" selectedKeys={[basePath]} mode="inline">
           <Menu.Item key="/" icon={<DashboardOutlined />}>
             <Link to="/">Dashboard</Link>
           </Menu.Item>

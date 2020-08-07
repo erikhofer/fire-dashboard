@@ -6,7 +6,7 @@ export const PageHeader: React.FC<PageHeaderProps> = props => {
   const { style, ...restProps } = props
   return (
     <AntPageHeader
-      style={{ backgroundColor: '#fff', marginTop: 8, ...style }}
+      style={{ backgroundColor: '#fff', marginTop: 4, ...style }}
       {...restProps}
     ></AntPageHeader>
   )
