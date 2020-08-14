@@ -7,6 +7,7 @@ import { PlusOutlined } from '@ant-design/icons'
 import { ColumnsType } from 'antd/lib/table'
 import { PageHeader } from '../components/PageHeader'
 import { PageContent } from '../components/PageContent'
+import { Currency } from '../components/Currency'
 
 const columns: ColumnsType<Asset> = [
   {
@@ -22,7 +23,8 @@ const columns: ColumnsType<Asset> = [
   {
     title: 'Value',
     dataIndex: 'currentValue',
-    align: 'right'
+    align: 'right',
+    render: (value: number) => <Currency amount={value} />
   }
 ]
 
