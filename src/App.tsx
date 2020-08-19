@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css'
 import { MainLayout } from './components/MainLayout'
-import { Dashboard } from './pages/Dashboard'
+import { Dashboard } from './pages/Dashboard/Dashboard'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { Assets } from './pages/Assets'
 import { AssetDetails } from './pages/AssetDetails'

@@ -1,7 +1,10 @@
 import React from 'react'
-import { PageHeader } from '../components/PageHeader'
-import { PageContent } from '../components/PageContent'
+import { PageHeader } from '../../components/PageHeader'
+import { PageContent } from '../../components/PageContent'
 import { Row, Col, Card } from 'antd'
+import { EmergencyFund } from './EmergencyFund'
+import { DebtFree } from './DebtFree'
+import { FinancialIndependence } from './FinancialIndependence'
 
 export const Dashboard: React.FC = () => {
   return (
@@ -10,13 +13,13 @@ export const Dashboard: React.FC = () => {
       <PageContent>
         <Row gutter={8} style={{ marginBottom: 8 }}>
           <Col span={6}>
-            <Card title="Emergency Fund">TODO</Card>
+            <EmergencyFund />
           </Col>
           <Col span={6}>
-            <Card title="Debt Free">TODO</Card>
+            <DebtFree />
           </Col>
           <Col span={6}>
-            <Card title="Financial Independence">TODO</Card>
+            <FinancialIndependence />
           </Col>
           <Col span={6}>
             <Card title="Passive Income">TODO</Card>
@@ -24,13 +27,16 @@ export const Dashboard: React.FC = () => {
         </Row>
         <Row gutter={8} style={{ marginBottom: 8 }}>
           <Col span={12}>
-            <Card title="Net Worth">TODO</Card>
+            <Card title="Income">TODO</Card>
           </Col>
           <Col span={12}>
-            <Card title="Income">TODO</Card>
+            <Card title="Cash Flow">TODO</Card>
           </Col>
         </Row>
         <Row gutter={8}>
+          <Col span={12}>
+            <Card title="Net Worth">TODO</Card>
+          </Col>
           <Col span={12}>
             <Card title="Asset Allocation">TODO</Card>
           </Col>
