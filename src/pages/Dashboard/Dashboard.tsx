@@ -5,12 +5,18 @@ import { Row, Col, Card } from 'antd'
 import { EmergencyFund } from './EmergencyFund'
 import { DebtFree } from './DebtFree'
 import { FinancialIndependence } from './FinancialIndependence'
+import { Goals } from './Goals'
 
 export const Dashboard: React.FC = () => {
   return (
     <>
       <PageHeader title="Dashboard" />
       <PageContent>
+        <Row gutter={8} style={{ marginBottom: 8 }}>
+          <Col span={12}>
+            <Goals />
+          </Col>
+        </Row>
         <Row gutter={8} style={{ marginBottom: 8 }}>
           <Col span={6}>
             <EmergencyFund />
