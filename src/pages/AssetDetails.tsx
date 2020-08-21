@@ -37,7 +37,7 @@ const initialAsset = {
 
 export const AssetDetails: React.FC = () => {
   const history = useHistory()
-  const { id } = useParams()
+  const { id } = useParams<{ id: string }>()
   const asset = useAsset(id)
   const dispatch = useDispatch()
   const [form] = Form.useForm()
