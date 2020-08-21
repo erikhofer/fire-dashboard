@@ -3,7 +3,7 @@ import { Card, Progress, Statistic, Row, Col, Space } from 'antd'
 import { useCurrency } from '../../hooks/useCurrency'
 import Countdown from 'antd/lib/statistic/Countdown'
 import moment from 'moment'
-import { useNetWorth } from '../../hooks/useNetWorth'
+import { useNetWorth } from '../../hooks/metrics/useNetWorth'
 
 export const DebtFree: React.FC = () => {
   const currency = useCurrency()

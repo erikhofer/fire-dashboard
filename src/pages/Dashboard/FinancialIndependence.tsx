@@ -1,8 +1,8 @@
 import React from 'react'
 import { Card, Progress, Statistic, Row, Col, Space } from 'antd'
-import { useNetWorth } from '../../hooks/useNetWorth'
+import { useNetWorth } from '../../hooks/metrics/useNetWorth'
 import { useGoals } from '../../hooks/useGoals'
-import { useTotalExpenses } from '../../hooks/useTotalExpenses'
+import { useTotalExpenses } from '../../hooks/metrics/useTotalExpenses'
 import { Percent } from '../../components/Percent'
 
 export const FinancialIndependence: React.FC = () => {
