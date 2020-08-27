@@ -19,7 +19,7 @@
     "antd": "4.6.1",
     "craco-antd": "1.18.1",
     "craco-styled-jsx": "1.0.1",
-    "immer": "7.0.7",
+    "immer": "7.0.8",
     "liquid-loading": "1.0.0",
     "moment": "2.27.0",
     "react": "16.13.1",
