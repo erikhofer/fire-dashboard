@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Layout, Menu, Divider } from 'antd'
+import { Layout, Menu, Divider, Alert } from 'antd'
 import {
   DashboardOutlined,
   SettingOutlined,
@@ -52,13 +52,19 @@ export const MainLayout: React.FC = ({ children }) => {
       <Layout>
         <Header
           style={{
-            position: 'fixed',
-            zIndex: 1,
-            width: '100%',
-            background: '#fff'
+            background: '#fff',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'flex-end'
           }}
-        />
-        <Content style={{ marginTop: 64 }}>{children}</Content>
+        >
+          <Alert
+            message="Demo. Data will not be saved!"
+            type="warning"
+            showIcon
+          />
+        </Header>
+        <Content>{children}</Content>
         <Footer style={{ textAlign: 'center' }}>
           FIRE Dashboard 0.0.0 <Divider type="vertical" />
           <Link to="/about">About</Link>
