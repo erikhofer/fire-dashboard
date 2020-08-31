@@ -1,12 +1,6 @@
 import React from 'react'
+import { formatPercent } from '../utils/format'
 
 export const Percent: React.FC<{ ratio: number }> = ({ ratio }) => {
-  return (
-    <>
-      {ratio.toLocaleString(undefined, {
-        style: 'percent',
-        minimumFractionDigits: 1
-      })}
-    </>
-  )
+  return <>{formatPercent(ratio)}</>
 }

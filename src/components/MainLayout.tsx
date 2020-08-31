@@ -59,7 +59,7 @@ export const MainLayout: React.FC = ({ children }) => {
           }}
         >
           <Alert
-            message="Demo. Data will not be saved!"
+            message="This is a demo. Data will not be saved!"
             type="warning"
             showIcon
           />
