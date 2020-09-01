@@ -1,3 +1,5 @@
+<img align="left" width="80" height="80" src="https://raw.githubusercontent.com/erikhofer/fire-dashboard/master/public/logo192.png" alt="Logo">
+
 # FIRE Dashboard
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
