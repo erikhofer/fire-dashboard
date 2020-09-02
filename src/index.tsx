@@ -16,7 +16,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 
 const persistConfig = {
   key: 'root',
-  storage,
+  storage
 }
 
 const persistedReducer = persistReducer(persistConfig, reducer)
