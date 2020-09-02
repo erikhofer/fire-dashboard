@@ -10,17 +10,31 @@ import { AppState } from './store/model'
 import { AppAction, reducer } from './store/reducer'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { initalState } from './store/dev'
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
+import { PersistGate } from 'redux-persist/integration/react'
+
+const persistConfig = {
+  key: 'root',
+  storage,
+}
+
+const persistedReducer = persistReducer(persistConfig, reducer)
 
 const store: Store<AppState, AppAction> = createStore(
-  reducer,
+  persistedReducer,
   initalState,
   composeWithDevTools(applyMiddleware())
 )
 
+const persistor = persistStore(store as any)
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <PersistGate loading={<liquid-loading />} persistor={persistor}>
+        <App />
+      </PersistGate>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
