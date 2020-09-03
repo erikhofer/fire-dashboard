@@ -5,9 +5,17 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-informational.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> The **FIRE** (Financial Independence, Retire Early) movement is a lifestyle movement with the goal of gaining financial independence and retiring early.
+>
+> &mdash; <cite>[Wikipedia](https://en.wikipedia.org/wiki/FIRE_movement)</cite>
+
+## What this is not
+
+This is not a tool for in-depth portfolio tracking. FIRE Dashboard aims to give a high-level overview with minimal effort. I created it because I am too lazy to keep track of everything in detail. If you want to do that, take a look at [Portfolio Performance](https://github.com/buchen/portfolio), another GREAT open source project.
 
 ## Available Scripts
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 In the project directory, you can run:
 
