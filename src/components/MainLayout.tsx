@@ -20,11 +20,27 @@ export const MainLayout: React.FC = ({ children }) => {
       <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed}>
         <div
           style={{
-            height: 32,
-            background: 'rgba(255, 255, 255, 0.2)',
-            margin: 16
+            height: 48,
+            margin: 16,
+            display: 'flex'
           }}
-        />
+        >
+          <img
+            alt="Logo"
+            src={`${process.env.PUBLIC_URL}/logo192.png`}
+            style={{ height: '100%' }}
+          />
+          <div
+            style={{
+              color: 'white',
+              fontSize: 32,
+              marginLeft: 24,
+              letterSpacing: 3
+            }}
+          >
+            FIRE
+          </div>
+        </div>
         <Menu theme="dark" selectedKeys={[basePath]} mode="inline">
           <Menu.Item key="/" icon={<DashboardOutlined />}>
             <Link to="/">Dashboard</Link>
