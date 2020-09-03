@@ -49,7 +49,7 @@ export const useNetWorthProgress = (): GoalProgress[] => {
           Fixed Expenses (yearly) are{' '}
           <Percent ratio={goals.expensesToNetWorthRatio} />{' '}
           <Info>
-            Net Wort need:{' '}
+            Net Wort needed:{' '}
             <Currency amount={netWorthNeededToCoverTotalFixedExpenses} />
           </Info>
         </>
@@ -78,7 +78,7 @@ export const useNetWorthProgress = (): GoalProgress[] => {
           Total Expenses (yearly) are{' '}
           <Percent ratio={goals.expensesToNetWorthRatio} />{' '}
           <Info>
-            Net Wort need:{' '}
+            Net Wort needed:{' '}
             <Currency amount={netWorthNeededToCoverTotalExpenses} />
           </Info>
         </>
