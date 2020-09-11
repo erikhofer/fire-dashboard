@@ -3,12 +3,13 @@ import { HistoryItem } from '../store/model'
 import { Table, Card } from 'antd'
 import { renderDate } from '../utils/date'
 import { ColumnsType } from 'antd/lib/table'
+import { Currency } from './Currency'
 
 const columns: ColumnsType<HistoryItem> = [
   {
-    title: 'Value',
-    dataIndex: 'value',
-    align: 'right'
+    title: 'Amount',
+    dataIndex: 'amount',
+    render: (value: number) => <Currency amount={value} />
   },
   {
     title: 'Date',

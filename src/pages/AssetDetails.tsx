@@ -11,13 +11,14 @@ import {
   message,
   Result,
   Space,
-  Switch
+  Switch,
+  Popconfirm
 } from 'antd'
 import { useDispatch } from 'react-redux'
-import { createAsset, updateAsset } from '../store/actions'
-import { SaveOutlined } from '@ant-design/icons'
+import { createAsset, updateAsset, deleteAsset } from '../store/actions'
+import { SaveOutlined, DeleteOutlined } from '@ant-design/icons'
 import { useAsset } from '../hooks/useAsset'
-import { ValueHistory } from '../components/ValueHistory'
+import { ValueHistory } from '../components/AmountHistory'
 import { PageContent } from '../components/PageContent'
 import { PageHeader } from '../components/PageHeader'
 import { createBreadcrumb } from '../utils/breadcrumb'
@@ -44,7 +45,6 @@ export const AssetDetails: React.FC = () => {
 
   const save = useCallback(
     (values: any) => {
-      console.log(values)
       if (asset === undefined) {
         dispatch(createAsset(values))
         history.replace('/assets')
@@ -58,6 +58,13 @@ export const AssetDetails: React.FC = () => {
   )
 
   const reset = useCallback(() => form.resetFields(), [form])
+  const deleteConfonfirmed = useCallback(() => {
+    if (asset) {
+      dispatch(deleteAsset(asset.id))
+      history.replace('/assets')
+      message.success('Asset deleted')
+    }
+  }, [dispatch, asset, history])
 
   if (asset === undefined && id !== 'create') {
     return <Result status="404" title="Asset not found" />
@@ -73,6 +80,21 @@ export const AssetDetails: React.FC = () => {
           { path: '/assets', breadcrumbName: 'Assets' },
           { path: id, breadcrumbName: title }
         ])}
+        extra={
+          asset && (
+            <Popconfirm
+              title="Do you want to delete this asset entirely?"
+              onConfirm={deleteConfonfirmed}
+              okText="Yes"
+              cancelText="No"
+              placement="left"
+            >
+              <Button danger icon={<DeleteOutlined />}>
+                Delete Asset
+              </Button>
+            </Popconfirm>
+          )
+        }
       />
       <PageContent>
         <Row gutter={16}>
@@ -98,10 +120,7 @@ export const AssetDetails: React.FC = () => {
                   rules={[
                     { required: true, message: 'Please input a value!' },
                     { type: 'number' },
-                    {
-                      validator: positiveNumber,
-                      message: 'Assets must have positive value!'
-                    }
+                    { validator: positiveNumber }
                   ]}
                 >
                   <InputNumber></InputNumber>
