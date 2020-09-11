@@ -1,1 +1,1 @@
-export const useTotalLiablities = () => -1000
+export const useTotalLiablities = () => 1000
