@@ -93,8 +93,8 @@ export const AssetDetails: React.FC = () => {
                   <Input autoFocus={asset === undefined} />
                 </Form.Item>
                 <Form.Item
-                  label="Value"
-                  name="currentValue"
+                  label="Amount"
+                  name="amount"
                   rules={[
                     { required: true, message: 'Please input a value!' },
                     { type: 'number' },

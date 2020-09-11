@@ -21,9 +21,8 @@ const columns: ColumnsType<Asset> = [
     )
   },
   {
-    title: 'Value',
-    dataIndex: 'currentValue',
-    align: 'right',
+    title: 'Amount',
+    dataIndex: 'amount',
     render: (value: number) => <Currency amount={value} />
   }
 ]
