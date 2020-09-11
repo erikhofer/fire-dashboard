@@ -4,6 +4,7 @@ export interface AppState {
 
 export interface Profile {
   assets: Asset[]
+  liabilities: Liability[]
 }
 
 export interface Entity {
@@ -23,3 +24,5 @@ export type NewEntity<T extends Entity> = Omit<T, 'id' | 'history'>
 export interface Asset extends Entity {
   isEmergencyFund: boolean
 }
+
+export interface Liability extends Entity {}

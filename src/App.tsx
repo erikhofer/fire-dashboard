@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { Assets } from './pages/Assets'
 import { AssetDetails } from './pages/AssetDetails'
 import { Result } from 'antd'
+import { Liabilities } from './pages/Liabilities'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" exact component={Dashboard} />
           <Route path="/assets/:id" component={AssetDetails} />
           <Route path="/assets" component={Assets} />
+          <Route path="/liabilities" component={Liabilities} />
           <Route>
             <Result status="404" title="Page not found" />
           </Route>

@@ -18,6 +18,14 @@ export const initalState: AppState = {
         isEmergencyFund: true,
         history: [{ amount: 420, date: moment().toISOString() }]
       }
+    ],
+    liabilities: [
+      {
+        id: '75df4d76-cdc5-41f6-ba31-f81f74b3f240',
+        name: 'Student Loan',
+        amount: 10_000,
+        history: [{ amount: 10_000, date: moment().toISOString() }]
+      }
     ]
   }
 }
