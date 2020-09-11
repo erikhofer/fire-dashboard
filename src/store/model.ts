@@ -1,4 +1,8 @@
 export interface AppState {
+  profile: Profile
+}
+
+export interface Profile {
   assets: Asset[]
 }
 
@@ -6,11 +10,11 @@ export interface Entity {
   id: string
   name: string
   history: HistoryItem[]
-  currentValue: number
+  amount: number
 }
 
 export interface HistoryItem {
-  value: number
+  amount: number
   date: string
 }
 

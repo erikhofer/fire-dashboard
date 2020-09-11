@@ -5,11 +5,11 @@ import { v4 as uuid } from 'uuid'
 
 const now = () => moment().toISOString()
 
-function initializeEntity(newEntity: { currentValue: number }) {
+function initializeEntity(newEntity: { amount: number }) {
   return {
     ...newEntity,
     id: uuid(),
-    history: [{ value: newEntity.currentValue, date: now() }]
+    history: [{ amount: newEntity.amount, date: now() }]
   }
 }
 

@@ -2,12 +2,16 @@ import { produce } from 'immer'
 import { combineReducers } from 'redux'
 import { ActionType, getType } from 'typesafe-actions'
 import * as actions from './actions'
-import { AppState, Asset, Entity } from './model'
+import { AppState, Asset, Entity, Profile } from './model'
 
 export type AppAction = ActionType<typeof actions>
 
-export const reducer = combineReducers<AppState, AppAction>({
+const profileReducer = combineReducers<Profile, AppAction>({
   assets: assetReducer
+})
+
+export const reducer = combineReducers<AppState, AppAction>({
+  profile: profileReducer
 })
 
 /**
@@ -20,12 +24,12 @@ function withUpdatedHistory<T extends Entity>(
   newEntity: T,
   date: string
 ): T {
-  if (oldEntity.currentValue === newEntity.currentValue) {
+  if (oldEntity.amount === newEntity.amount) {
     return newEntity
   }
   return {
     ...newEntity,
-    history: [{ value: newEntity.currentValue, date }, ...newEntity.history]
+    history: [{ amount: newEntity.amount, date }, ...newEntity.history]
   }
 }
 
