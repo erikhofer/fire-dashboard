@@ -1,0 +1,13 @@
+{
+  "editor.tabSize": 2,
+  "emmet.syntaxProfiles": {
+    "javascript": "jsx"
+  },
+  "editor.formatOnSave": true,
+  "tslint.autoFixOnSave": true,
+  "files.exclude": {
+    "node_modules": true,
+    "build": true
+  },
+  "typescript.tsdk": "node_modules\\typescript\\lib"
+}
