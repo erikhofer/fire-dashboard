@@ -11,79 +11,82 @@ import {
   message,
   Result,
   Space,
-  Switch,
   Popconfirm
 } from 'antd'
 import { useDispatch } from 'react-redux'
-import { createAsset, updateAsset, deleteAsset } from '../store/actions'
+import {
+  createLiability,
+  updateLiability,
+  deleteLiability
+} from '../store/actions'
 import { SaveOutlined, DeleteOutlined } from '@ant-design/icons'
-import { useAsset } from '../hooks/useAsset'
 import { ValueHistory } from '../components/AmountHistory'
 import { PageContent } from '../components/PageContent'
 import { PageHeader } from '../components/PageHeader'
 import { createBreadcrumb } from '../utils/breadcrumb'
 import { positiveNumber } from '../utils/validation'
 import { formStyles } from '../utils/form'
+import { useLiability } from '../hooks/useLiability'
 
-const initialAsset = {
+const initialLiability = {
   isEmergencyFund: false
 }
 
-export const AssetDetails: React.FC = () => {
+export const LiabilityDetails: React.FC = () => {
   const history = useHistory()
   const { id } = useParams<{ id: string }>()
-  const asset = useAsset(id)
+  const liability = useLiability(id)
   const dispatch = useDispatch()
   const [form] = Form.useForm()
 
   const save = useCallback(
     (values: any) => {
-      if (asset === undefined) {
-        dispatch(createAsset(values))
-        history.replace('/assets')
-        message.success('Asset created')
+      if (liability === undefined) {
+        dispatch(createLiability(values))
+        history.replace('/liabilities')
+        message.success('Liability created')
       } else {
-        dispatch(updateAsset({ ...asset, ...values }))
-        message.success('Asset updated')
+        dispatch(updateLiability({ ...liability, ...values }))
+        message.success('Liability updated')
       }
     },
-    [dispatch, asset, history]
+    [dispatch, liability, history]
   )
 
   const reset = useCallback(() => form.resetFields(), [form])
   const deleteConfonfirmed = useCallback(() => {
-    if (asset) {
-      dispatch(deleteAsset(asset.id))
-      history.replace('/assets')
-      message.success('Asset deleted')
+    if (liability) {
+      dispatch(deleteLiability(liability.id))
+      history.replace('/liabilities')
+      message.success('Liability deleted')
     }
-  }, [dispatch, asset, history])
+  }, [dispatch, liability, history])
 
-  if (asset === undefined && id !== 'create') {
-    return <Result status="404" title="Asset not found" />
+  if (liability === undefined && id !== 'create') {
+    return <Result status="404" title="Liability not found" />
   }
 
-  const title = asset?.name ?? 'Create Asset'
+  const title = liability?.name ?? 'Create Liability'
 
   return (
     <>
       <PageHeader
         title={title}
         breadcrumb={createBreadcrumb([
-          { path: '/assets', breadcrumbName: 'Assets' },
+          { path: '/liabilities', breadcrumbName: 'Liabilities' },
           { path: id, breadcrumbName: title }
         ])}
         extra={
-          asset && (
+          liability && (
             <Popconfirm
-              title="Do you want to delete this asset entirely?"
+              title="Do you want to delete this liability entirely?"
               onConfirm={deleteConfonfirmed}
               okText="Yes"
               cancelText="No"
               placement="left"
             >
               <Button danger icon={<DeleteOutlined />}>
-                Delete Asset
+                Delete Liability
               </Button>
             </Popconfirm>
           )
@@ -97,7 +100,7 @@ export const AssetDetails: React.FC = () => {
                 {...formStyles.layout}
                 form={form}
                 name="asset"
-                initialValues={asset ?? initialAsset}
+                initialValues={liability ?? initialLiability}
                 onFinish={save}
               >
                 <Form.Item
@@ -105,7 +108,7 @@ export const AssetDetails: React.FC = () => {
                   name="name"
                   rules={[{ required: true, message: 'Please input a name!' }]}
                 >
-                  <Input autoFocus={asset === undefined} />
+                  <Input autoFocus={liability === undefined} />
                 </Form.Item>
                 <Form.Item
                   label="Amount"
@@ -117,13 +120,6 @@ export const AssetDetails: React.FC = () => {
                   ]}
                 >
                   <InputNumber></InputNumber>
-                </Form.Item>
-                <Form.Item
-                  label="Emergency Fund"
-                  name="isEmergencyFund"
-                  valuePropName="checked"
-                >
-                  <Switch />
                 </Form.Item>
                 <Form.Item {...formStyles.tailLayout}>
                   <Space>
@@ -140,9 +136,9 @@ export const AssetDetails: React.FC = () => {
               </Form>
             </Card>
           </Col>
-          {asset && (
+          {liability && (
             <Col span={12}>
-              <ValueHistory history={asset.history}></ValueHistory>
+              <ValueHistory history={liability.history}></ValueHistory>
             </Col>
           )}
         </Row>
