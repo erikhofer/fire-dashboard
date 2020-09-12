@@ -14,10 +14,7 @@ const columns: ColumnsType<Asset> = [
     title: 'Name',
     dataIndex: 'name',
     render: (text: string, asset: Asset) => (
-      <>
-        <Link to={`/assets/${asset.id}`}>{text}</Link>{' '}
-        {asset.isEmergencyFund && <Tag color="green">Emergency Fund</Tag>}
-      </>
+      <Link to={`/assets/${asset.id}`}>{text}</Link>
     )
   },
   {
@@ -25,7 +22,13 @@ const columns: ColumnsType<Asset> = [
     dataIndex: 'amount',
     render: (value: number) => <Currency amount={value} />
   },
-  { title: 'Asset Class', dataIndex: 'class' }
+  { title: 'Asset Class', dataIndex: 'class' },
+  {
+    title: '',
+    dataIndex: 'isEmergencyFund',
+    render: (isEmergencyFund: boolean) =>
+      isEmergencyFund && <Tag color="green">Emergency Fund</Tag>
+  }
 ]
 
 export const Assets: React.FC = () => {
