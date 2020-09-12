@@ -58,7 +58,7 @@ export const useNetWorthProgress = (): GoalProgress[] => {
         netWorth >= 0 ? (
           netWorth >= netWorthNeededToCoverTotalFixedExpenses ? (
             <ProgressMessage type="success">
-              Your assets will likely cover your Fixed Expenses forever
+              Your assets may cover your Fixed Expenses forever
             </ProgressMessage>
           ) : (
             <Progress
@@ -87,7 +87,7 @@ export const useNetWorthProgress = (): GoalProgress[] => {
         netWorth >= 0 ? (
           netWorth >= netWorthNeededToCoverTotalExpenses ? (
             <ProgressMessage type="success">
-              Your assets will likely cover your Total Expenses forever
+              Your assets may cover your Total Expenses forever
             </ProgressMessage>
           ) : (
             <Progress
