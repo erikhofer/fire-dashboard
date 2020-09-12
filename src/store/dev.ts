@@ -65,9 +65,9 @@ export const initalState: AppState = {
       {
         id: '6f25f1db-f54b-4c62-841e-084cf87a7f8a',
         name: 'Salary',
-        amount: 4000,
+        amount: 3000,
         isPassive: false,
-        history: [{ amount: 4000, date: moment().toISOString() }]
+        history: [{ amount: 3000, date: moment().toISOString() }]
       },
       {
         id: 'b37f0ae1-ee48-4eec-ba74-320127fbf97a',
@@ -75,6 +75,36 @@ export const initalState: AppState = {
         amount: 100,
         isPassive: true,
         history: [{ amount: 100, date: moment().toISOString() }]
+      }
+    ],
+    expenses: [
+      {
+        id: '3d6aa52f-b409-4b2f-b603-b7201fcff15f',
+        name: 'Rent',
+        amount: 1000,
+        isFixed: true,
+        history: [{ amount: 1000, date: moment().toISOString() }]
+      },
+      {
+        id: '3d6aa52f-b409-4b2f-b603-b7201fcff15f',
+        name: 'Essential Groceries',
+        amount: 200,
+        isFixed: true,
+        history: [{ amount: 200, date: moment().toISOString() }]
+      },
+      {
+        id: '164585a5-7fc7-472f-bb3f-cbb446d2ca26',
+        name: 'Non-Essential Groceries',
+        amount: 100,
+        isFixed: false,
+        history: [{ amount: 100, date: moment().toISOString() }]
+      },
+      {
+        id: 'e1db5796-bf19-41d3-ab11-5ff18636b20c',
+        name: 'Streaming Services',
+        amount: 20,
+        isFixed: false,
+        history: [{ amount: 20, date: moment().toISOString() }]
       }
     ]
   }

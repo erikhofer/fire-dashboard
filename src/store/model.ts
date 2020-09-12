@@ -6,6 +6,7 @@ export interface Profile {
   assets: Asset[]
   liabilities: Liability[]
   incomes: Income[]
+  expenses: Expense[]
 }
 
 export interface Entity {
@@ -31,4 +32,8 @@ export interface Liability extends Entity {}
 
 export interface Income extends Entity {
   isPassive: boolean
+}
+
+export interface Expense extends Entity {
+  isFixed: boolean
 }

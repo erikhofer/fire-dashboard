@@ -10,6 +10,7 @@ import { Liabilities } from './pages/Liabilities'
 import { LiabilityDetails } from './pages/LiabilityDetails'
 import { Incomes } from './pages/Incomes'
 import { IncomeDetails } from './pages/IncomeDetails'
+import { Expenses } from './pages/Expenses'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/liabilities" component={Liabilities} />
           <Route path="/incomes/:id" component={IncomeDetails} />
           <Route path="/incomes" component={Incomes} />
+          <Route path="/expenses" component={Expenses} />
           <Route>
             <Result status="404" title="Page not found" />
           </Route>
