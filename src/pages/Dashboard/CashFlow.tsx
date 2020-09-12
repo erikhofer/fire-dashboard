@@ -50,7 +50,9 @@ export const CashFlow: React.FC = () => {
             <Statistic
               title="Total Expenses % of NW"
               value={
-                netWorth > 0 ? formatPercent(totalExpenses / netWorth) : 'N/A'
+                netWorth > 0
+                  ? formatPercent((totalExpenses * 12) / netWorth)
+                  : 'N/A'
               }
             />
           </Col>
@@ -65,7 +67,7 @@ export const CashFlow: React.FC = () => {
               title="Fixed Expenses % of NW"
               value={
                 netWorth > 0
-                  ? formatPercent(totalFixedExpenses / netWorth)
+                  ? formatPercent((totalFixedExpenses * 12) / netWorth)
                   : 'N/A'
               }
             />
