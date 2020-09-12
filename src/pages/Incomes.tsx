@@ -18,7 +18,7 @@ const columns: ColumnsType<Income> = [
     )
   },
   {
-    title: 'Amount',
+    title: 'Amount (monthly)',
     dataIndex: 'amount',
     render: (value: number) => <Currency amount={value} />
   },
@@ -40,7 +40,7 @@ export const Incomes: React.FC = () => {
         extra={[
           <Link key="1" to="/incomes/create">
             <Button type="primary" icon={<PlusOutlined />}>
-              Add Asset
+              Add Income
             </Button>
           </Link>
         ]}
