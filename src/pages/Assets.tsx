@@ -24,7 +24,8 @@ const columns: ColumnsType<Asset> = [
     title: 'Amount',
     dataIndex: 'amount',
     render: (value: number) => <Currency amount={value} />
-  }
+  },
+  { title: 'Asset Class', dataIndex: 'class' }
 ]
 
 export const Assets: React.FC = () => {

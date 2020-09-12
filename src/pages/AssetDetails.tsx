@@ -12,7 +12,8 @@ import {
   Result,
   Space,
   Switch,
-  Popconfirm
+  Popconfirm,
+  AutoComplete
 } from 'antd'
 import { useDispatch } from 'react-redux'
 import { createAsset, updateAsset, deleteAsset } from '../store/actions'
@@ -24,6 +25,7 @@ import { PageHeader } from '../components/PageHeader'
 import { createBreadcrumb } from '../utils/breadcrumb'
 import { positiveNumber } from '../utils/validation'
 import { formStyles } from '../utils/form'
+import { useAssetClasses } from '../hooks/useAssetClasses'
 
 const initialAsset = {
   isEmergencyFund: false
@@ -35,6 +37,9 @@ export const AssetDetails: React.FC = () => {
   const asset = useAsset(id)
   const dispatch = useDispatch()
   const [form] = Form.useForm()
+  const assetClasses = useAssetClasses().map(assetClass => ({
+    value: assetClass
+  }))
 
   const save = useCallback(
     (values: any) => {
@@ -117,6 +122,9 @@ export const AssetDetails: React.FC = () => {
                   ]}
                 >
                   <InputNumber></InputNumber>
+                </Form.Item>
+                <Form.Item label="Asset Class" name="class">
+                  <AutoComplete options={assetClasses} />
                 </Form.Item>
                 <Form.Item
                   label="Emergency Fund"

@@ -23,6 +23,7 @@ export type NewEntity<T extends Entity> = Omit<T, 'id' | 'history'>
 
 export interface Asset extends Entity {
   isEmergencyFund: boolean
+  class?: string
 }
 
 export interface Liability extends Entity {}
