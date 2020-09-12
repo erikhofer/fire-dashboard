@@ -2,13 +2,14 @@ import { produce } from 'immer'
 import { combineReducers } from 'redux'
 import { ActionType, getType } from 'typesafe-actions'
 import * as actions from './actions'
-import { AppState, Asset, Entity, Profile, Liability } from './model'
+import { AppState, Asset, Entity, Profile, Liability, Income } from './model'
 
 export type AppAction = ActionType<typeof actions>
 
 const profileReducer = combineReducers<Profile, AppAction>({
   assets: assetReducer,
-  liabilities: liabilityReducer
+  liabilities: liabilityReducer,
+  incomes: incomeReducer
 })
 
 export const reducer = combineReducers<AppState, AppAction>({
@@ -80,6 +81,30 @@ function liabilityReducer(
       case getType(actions.deleteLiability):
         draft.splice(
           draft.findIndex(liability => liability.id === action.payload),
+          1
+        )
+        break
+    }
+  })
+}
+
+function incomeReducer(state: Income[] = [], action: AppAction): Income[] {
+  return produce(state, draft => {
+    switch (action.type) {
+      case getType(actions.createIncome):
+        draft.push(action.payload)
+        break
+      case getType(actions.updateIncome):
+        const index = draft.findIndex(income => income.id === action.payload.id)
+        draft[index] = withUpdatedHistory(
+          draft[index],
+          action.payload,
+          action.meta
+        )
+        break
+      case getType(actions.deleteIncome):
+        draft.splice(
+          draft.findIndex(income => income.id === action.payload),
           1
         )
         break

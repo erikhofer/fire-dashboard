@@ -1,5 +1,5 @@
 import { createAction } from 'typesafe-actions'
-import { Asset, Liability } from './model'
+import { Asset, Liability, Income } from './model'
 import moment from 'moment'
 import { v4 as uuid } from 'uuid'
 
@@ -32,3 +32,13 @@ export const updateLiability = createAction(
   now
 )<Liability, string>()
 export const deleteLiability = createAction('DELETE_LIABILITY')<string>()
+
+export const createIncome = createAction('CREATE_INCOME', initializeEntity)<
+  Income
+>()
+export const updateIncome = createAction(
+  'UPDATE_INCOME',
+  income => income,
+  now
+)<Income, string>()
+export const deleteIncome = createAction('DELETE_INCOME')<string>()

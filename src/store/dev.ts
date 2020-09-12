@@ -60,6 +60,22 @@ export const initalState: AppState = {
         amount: 10_000,
         history: [{ amount: 10_000, date: moment().toISOString() }]
       }
+    ],
+    incomes: [
+      {
+        id: '6f25f1db-f54b-4c62-841e-084cf87a7f8a',
+        name: 'Salary',
+        amount: 4000,
+        isPassive: false,
+        history: [{ amount: 4000, date: moment().toISOString() }]
+      },
+      {
+        id: 'b37f0ae1-ee48-4eec-ba74-320127fbf97a',
+        name: 'Stock Dividends',
+        amount: 100,
+        isPassive: true,
+        history: [{ amount: 100, date: moment().toISOString() }]
+      }
     ]
   }
 }

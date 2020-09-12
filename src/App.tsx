@@ -8,6 +8,7 @@ import { AssetDetails } from './pages/AssetDetails'
 import { Result } from 'antd'
 import { Liabilities } from './pages/Liabilities'
 import { LiabilityDetails } from './pages/LiabilityDetails'
+import { Incomes } from './pages/Incomes'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/assets" component={Assets} />
           <Route path="/liabilities/:id" component={LiabilityDetails} />
           <Route path="/liabilities" component={Liabilities} />
+          <Route path="/incomes" component={Incomes} />
           <Route>
             <Result status="404" title="Page not found" />
           </Route>

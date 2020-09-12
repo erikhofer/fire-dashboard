@@ -5,6 +5,7 @@ export interface AppState {
 export interface Profile {
   assets: Asset[]
   liabilities: Liability[]
+  incomes: Income[]
 }
 
 export interface Entity {
@@ -27,3 +28,7 @@ export interface Asset extends Entity {
 }
 
 export interface Liability extends Entity {}
+
+export interface Income extends Entity {
+  isPassive: boolean
+}
