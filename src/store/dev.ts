@@ -3,6 +3,10 @@ import moment from 'moment'
 
 export const initalState: AppState = {
   profile: {
+    goals: {
+      emergencyFund: 10_000,
+      expensesToNetWorthRatio: 0.04
+    },
     assets: [
       {
         id: '1cf9cf6e-272a-4261-9e6a-25cdcbab3aa3',
@@ -101,10 +105,10 @@ export const initalState: AppState = {
       },
       {
         id: 'e1db5796-bf19-41d3-ab11-5ff18636b20c',
-        name: 'Streaming Services',
-        amount: 20,
+        name: 'Traveling',
+        amount: 300,
         isFixed: false,
-        history: [{ amount: 20, date: moment().toISOString() }]
+        history: [{ amount: 300, date: moment().toISOString() }]
       }
     ]
   }

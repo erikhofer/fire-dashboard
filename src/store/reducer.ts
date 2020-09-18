@@ -9,7 +9,8 @@ import {
   Profile,
   Liability,
   Income,
-  Expense
+  Expense,
+  Goals
 } from './model'
 
 export type AppAction = ActionType<typeof actions>
@@ -18,7 +19,8 @@ const profileReducer = combineReducers<Profile, AppAction>({
   assets: assetReducer,
   liabilities: liabilityReducer,
   incomes: incomeReducer,
-  expenses: expenseReducer
+  expenses: expenseReducer,
+  goals: goalsReducer
 })
 
 export const reducer = combineReducers<AppState, AppAction>({
@@ -41,6 +43,18 @@ function withUpdatedHistory<T extends Entity>(
   return {
     ...newEntity,
     history: [{ amount: newEntity.amount, date }, ...newEntity.history]
+  }
+}
+
+function goalsReducer(
+  state: Goals = { emergencyFund: 1000, expensesToNetWorthRatio: 0.04 },
+  action: AppAction
+): Goals {
+  switch (action.type) {
+    case getType(actions.updateGoals):
+      return action.payload
+    default:
+      return state
   }
 }
 

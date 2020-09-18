@@ -1,4 +1,5 @@
-export const useGoals = () => ({
-  emergencyFund: 10_000,
-  expensesToNetWorthRatio: 0.04
-})
+import { useSelector } from 'react-redux'
+import { AppState, Goals } from '../store/model'
+
+export const useGoals = () =>
+  useSelector<AppState, Goals>(state => state.profile.goals)

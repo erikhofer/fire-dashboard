@@ -1,5 +1,5 @@
 import { createAction } from 'typesafe-actions'
-import { Asset, Liability, Income, Expense } from './model'
+import { Asset, Liability, Income, Expense, Goals } from './model'
 import moment from 'moment'
 import { v4 as uuid } from 'uuid'
 
@@ -12,6 +12,8 @@ function initializeEntity(newEntity: { amount: number }) {
     history: [{ amount: newEntity.amount, date: now() }]
   }
 }
+
+export const updateGoals = createAction('UPDATE_GOALS')<Goals>()
 
 export const createAsset = createAction('CREATE_ASSET', initializeEntity)<
   Asset

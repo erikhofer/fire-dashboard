@@ -7,6 +7,12 @@ export interface Profile {
   liabilities: Liability[]
   incomes: Income[]
   expenses: Expense[]
+  goals: Goals
+}
+
+export interface Goals {
+  emergencyFund: number
+  expensesToNetWorthRatio: number
 }
 
 export interface Entity {

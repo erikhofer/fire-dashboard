@@ -11,6 +11,7 @@ import { LiabilityDetails } from './pages/LiabilityDetails'
 import { Incomes } from './pages/Incomes'
 import { IncomeDetails } from './pages/IncomeDetails'
 import { Expenses } from './pages/Expenses'
+import { Settings } from './pages/Settings'
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/incomes/:id" component={IncomeDetails} />
           <Route path="/incomes" component={Incomes} />
           <Route path="/expenses" component={Expenses} />
+          <Route path="/settings" component={Settings} />
           <Route>
             <Result status="404" title="Page not found" />
           </Route>
