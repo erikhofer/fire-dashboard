@@ -12,6 +12,7 @@ import { Incomes } from './pages/Incomes'
 import { IncomeDetails } from './pages/IncomeDetails'
 import { Expenses } from './pages/Expenses'
 import { Settings } from './pages/Settings'
+import { About } from './pages/About'
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/incomes" component={Incomes} />
           <Route path="/expenses" component={Expenses} />
           <Route path="/settings" component={Settings} />
+          <Route path="/about" component={About} />
           <Route>
             <Result status="404" title="Page not found" />
           </Route>
