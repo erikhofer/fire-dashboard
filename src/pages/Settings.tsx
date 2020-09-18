@@ -54,6 +54,7 @@ export const Settings: React.FC = () => {
                     { type: 'number' },
                     { validator: positiveNumber }
                   ]}
+                  extra="High liquidity, zero risk reserve for unexpected expenses or unemployment. Common ballpark is 3-6 times monthly Total Expenses."
                 >
                   <InputNumber></InputNumber>
                 </Form.Item>
@@ -65,6 +66,21 @@ export const Settings: React.FC = () => {
                     { type: 'number' },
                     { validator: positiveNumber }
                   ]}
+                  extra={
+                    <>
+                      Estimated safe withdrawal rate, i.e. how much of the Net
+                      Worth can be spent per year without reducing it over time.
+                      Common value from the{' '}
+                      <a
+                        href="https://en.wikipedia.org/wiki/Trinity_study"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Trinity study
+                      </a>{' '}
+                      is 4%. Lower values are more conservative.
+                    </>
+                  }
                 >
                   <InputNumber min={0.01} max={1} step={0.001}></InputNumber>
                 </Form.Item>
