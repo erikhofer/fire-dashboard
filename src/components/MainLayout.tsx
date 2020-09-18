@@ -1,10 +1,6 @@
 import React, { useState } from 'react'
 import { Layout, Menu, Divider, Alert } from 'antd'
-import {
-  DashboardOutlined,
-  SettingOutlined,
-  FlagOutlined
-} from '@ant-design/icons'
+import { DashboardOutlined, SettingOutlined } from '@ant-design/icons'
 import { LiabilityIcon, AssetIcon, IncomeIcon, ExpenseIcon } from './Icons'
 import { Link, useLocation } from 'react-router-dom'
 
@@ -56,9 +52,6 @@ export const MainLayout: React.FC = ({ children }) => {
           </Menu.Item>
           <Menu.Item key="/expenses" icon={<ExpenseIcon />}>
             <Link to="/expenses">Expenses</Link>
-          </Menu.Item>
-          <Menu.Item key="/goals" icon={<FlagOutlined />}>
-            <Link to="/goals">Goals</Link>
           </Menu.Item>
           <Menu.Item key="/settings" icon={<SettingOutlined />}>
             <Link to="/settings">Settings</Link>
