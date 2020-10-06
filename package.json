@@ -56,7 +56,7 @@
     "@testing-library/react": "11.0.4",
     "@testing-library/user-event": "12.1.7",
     "@types/jest": "26.0.14",
-    "@types/node": "12.12.62",
+    "@types/node": "12.12.64",
     "@types/react": "16.9.50",
     "@types/react-dom": "16.9.8",
     "@types/react-redux": "7.1.9",
