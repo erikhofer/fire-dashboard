@@ -30,7 +30,8 @@
     "lint:prettier": "prettier --check \"src/**/*\"",
     "fix:prettier": "prettier --write \"src/**/*\"",
     "lint": "npm-run-all lint:**",
-    "fix": "npm-run-all fix:**"
+    "fix": "npm-run-all fix:**",
+    "license-report-generator": "license-report-generator"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -48,10 +49,6 @@
     ]
   },
   "devDependencies": {
-    "@xinra/prettier-config": "2.0.0",
-    "license-checker": "25.0.1",
-    "npm-run-all": "4.1.5",
-    "prettier": "2.1.2",
     "@testing-library/jest-dom": "5.11.4",
     "@testing-library/react": "11.0.4",
     "@testing-library/user-event": "12.1.7",
@@ -63,8 +60,13 @@
     "@types/react-router-dom": "5.1.6",
     "@types/styled-jsx": "2.2.8",
     "@types/uuid": "8.3.0",
+    "@wbmnky/license-report-generator": "^2.1.0",
+    "@xinra/prettier-config": "2.0.0",
     "craco-antd": "1.18.1",
-    "craco-styled-jsx": "1.0.1"
+    "craco-styled-jsx": "1.0.1",
+    "license-checker": "25.0.1",
+    "npm-run-all": "4.1.5",
+    "prettier": "2.1.2"
   },
   "prettier": "@xinra/prettier-config"
 }
