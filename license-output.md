@@ -4,7 +4,7 @@
 
 ### @ant-design/icons
   * **Version:** 4.2.2
-  * **License:** 
+  * **License:** MIT
   * **Description:** &lt;h1 align=&quot;center&quot;&gt; Ant Design Icons for React &lt;/h1&gt;
 
 ### @craco/craco
