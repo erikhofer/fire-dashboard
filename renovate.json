@@ -1,5 +1,14 @@
 {
   "extends": [
     "config:base"
+  ],
+  "stabilityDays": 7,
+  "prCreation": "not-pending",
+  "dependencyDashboard": true,
+  "packageRules": [
+    {
+      "updateTypes": ["minor", "patch", "pin"],
+      "automerge": true
+    }
   ]
 }
