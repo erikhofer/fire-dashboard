@@ -60,7 +60,7 @@
     "@types/react-router-dom": "5.1.6",
     "@types/styled-jsx": "2.2.8",
     "@types/uuid": "8.3.0",
-    "@wbmnky/license-report-generator": "^2.1.0",
+    "@wbmnky/license-report-generator": "2.1.0",
     "@xinra/prettier-config": "2.0.0",
     "craco-antd": "1.18.1",
     "craco-styled-jsx": "1.0.1",
