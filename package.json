@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "4.2.2",
-    "@craco/craco": "5.7.0",
+    "@craco/craco": "5.8.0",
     "antd": "4.7.3",
     "immer": "7.0.14",
     "liquid-loading": "1.0.0",
