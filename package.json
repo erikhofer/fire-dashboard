@@ -5,7 +5,7 @@
   "dependencies": {
     "@ant-design/icons": "4.3.0",
     "@craco/craco": "5.9.0",
-    "antd": "4.7.3",
+    "antd": "4.9.4",
     "immer": "8.0.0",
     "liquid-loading": "1.0.0",
     "moment": "2.29.1",
