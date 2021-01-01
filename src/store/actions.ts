@@ -15,9 +15,10 @@ function initializeEntity(newEntity: { amount: number }) {
 
 export const updateGoals = createAction('UPDATE_GOALS')<Goals>()
 
-export const createAsset = createAction('CREATE_ASSET', initializeEntity)<
-  Asset
->()
+export const createAsset = createAction(
+  'CREATE_ASSET',
+  initializeEntity
+)<Asset>()
 export const updateAsset = createAction('UPDATE_ASSET', asset => asset, now)<
   Asset,
   string
@@ -35,9 +36,10 @@ export const updateLiability = createAction(
 )<Liability, string>()
 export const deleteLiability = createAction('DELETE_LIABILITY')<string>()
 
-export const createIncome = createAction('CREATE_INCOME', initializeEntity)<
-  Income
->()
+export const createIncome = createAction(
+  'CREATE_INCOME',
+  initializeEntity
+)<Income>()
 export const updateIncome = createAction(
   'UPDATE_INCOME',
   income => income,
@@ -45,9 +47,10 @@ export const updateIncome = createAction(
 )<Income, string>()
 export const deleteIncome = createAction('DELETE_INCOME')<string>()
 
-export const createExpense = createAction('CREATE_EXPENSE', initializeEntity)<
-  Expense
->()
+export const createExpense = createAction(
+  'CREATE_EXPENSE',
+  initializeEntity
+)<Expense>()
 export const updateExpense = createAction(
   'UPDATE_EXPENSE',
   expense => expense,
