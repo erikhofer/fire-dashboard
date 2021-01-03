@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { Layout, Menu, Divider, Alert } from 'antd'
+import { Layout, Menu, Alert } from 'antd'
 import { DashboardOutlined, SettingOutlined } from '@ant-design/icons'
 import { LiabilityIcon, AssetIcon, IncomeIcon, ExpenseIcon } from './Icons'
 import { Link, useLocation } from 'react-router-dom'
+import { LayoutFooter } from './LayoutFooter'
 
-const { Header, Content, Footer, Sider } = Layout
+const { Header, Content, Sider } = Layout
 
 export const MainLayout: React.FC = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false)
@@ -74,18 +75,7 @@ export const MainLayout: React.FC = ({ children }) => {
           />
         </Header>
         <Content>{children}</Content>
-        <Footer style={{ textAlign: 'center' }}>
-          FIRE Dashboard 0.0.0 <Divider type="vertical" />
-          <Link to="/about">About</Link>
-          <Divider type="vertical" /> Made with ❤ free and{' '}
-          <a
-            href="https://github.com/erikhofer/fire-dashboard"
-            target="blank"
-            rel="noopener"
-          >
-            open source
-          </a>
-        </Footer>
+        <LayoutFooter />
       </Layout>
     </Layout>
   )

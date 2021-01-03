@@ -14,6 +14,7 @@ import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import { PersistGate } from 'redux-persist/integration/react'
 import reportWebVitals from './reportWebVitals'
+import { AuthProvider } from './auth/auth'
 
 const persistConfig = {
   key: 'root',
@@ -32,11 +33,13 @@ const persistor = persistStore(store as any)
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <PersistGate loading={<liquid-loading />} persistor={persistor}>
-        <App />
-      </PersistGate>
-    </Provider>
+    <AuthProvider>
+      <Provider store={store}>
+        <PersistGate loading={<liquid-loading />} persistor={persistor}>
+          <App />
+        </PersistGate>
+      </Provider>
+    </AuthProvider>
   </React.StrictMode>,
   document.getElementById('root')
 )
