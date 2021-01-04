@@ -18,23 +18,23 @@ import { IncomeDetails } from './pages/IncomeDetails'
 import { Expenses } from './pages/Expenses'
 import { Settings } from './pages/Settings'
 import { About } from './pages/About'
-import { useAuth } from './auth/auth'
+import { useAuth } from './services/auth'
 import { Login } from './pages/Login'
 import { Projects } from './pages/Projects'
 
 function App() {
-  const { isLoggedIn } = useAuth().session.info
+  const { isLoggedIn } = useAuth()
 
   return (
     <Router>
       <Switch>
         <Route path="/login" component={Login} />
         {isLoggedIn ? null : <Redirect to="/login" />}
-        <Route path="/projects" component={Projects} />
         <Route>
           <MainLayout>
             <Switch>
               <Route path="/" exact component={Dashboard} />
+              <Route path="/projects" component={Projects} />
               <Route path="/assets/:id" component={AssetDetails} />
               <Route path="/assets" component={Assets} />
               <Route path="/liabilities/:id" component={LiabilityDetails} />

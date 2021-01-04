@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { Layout, Menu, Alert } from 'antd'
+import { Layout, Menu, Alert, Space } from 'antd'
 import { DashboardOutlined, SettingOutlined } from '@ant-design/icons'
 import { LiabilityIcon, AssetIcon, IncomeIcon, ExpenseIcon } from './Icons'
 import { Link, useLocation } from 'react-router-dom'
 import { LayoutFooter } from './LayoutFooter'
+import { UserControl } from './UserControl'
 
 const { Header, Content, Sider } = Layout
 
@@ -68,11 +69,14 @@ export const MainLayout: React.FC = ({ children }) => {
             justifyContent: 'flex-end'
           }}
         >
-          <Alert
-            message="This is a demo. Data will not be saved!"
-            type="warning"
-            showIcon
-          />
+          <Space size="large">
+            <Alert
+              message="This is a demo. Data will not be saved!"
+              type="warning"
+              showIcon
+            />
+            <UserControl />
+          </Space>
         </Header>
         <Content>{children}</Content>
         <LayoutFooter />

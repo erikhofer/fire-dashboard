@@ -1,10 +1,11 @@
-import { LoginOutlined, UserOutlined } from '@ant-design/icons'
-import { Avatar, Button, Form, Input, Result, Skeleton, Space } from 'antd'
+import { LoginOutlined } from '@ant-design/icons'
+import { Button, Card, Form, Input, Layout } from 'antd'
 import React from 'react'
-import { useAuth } from '../auth/auth'
-import { OnboardingLayout } from '../components/OnboardingLayout'
-import { useUserDetails } from '../hooks/useUserDetails'
-import { formStyles } from '../utils/form'
+import { useAuth } from '../services/auth'
+import { Redirect } from 'react-router-dom'
+import { LayoutFooter } from '../components/LayoutFooter'
+
+const { Content } = Layout
 
 export const Login: React.FC = () => {
   const [form] = Form.useForm()
@@ -12,66 +13,48 @@ export const Login: React.FC = () => {
 
   const login = ({ identityProvider }: any) => auth.login(identityProvider)
 
+  if (auth.isLoggedIn) {
+    return <Redirect to="/" />
+  }
+
   return (
-    <OnboardingLayout>
-      {auth.session.info.isLoggedIn ? (
-        <UserDetails />
-      ) : (
-        <Form
-          {...formStyles.layout}
-          form={form}
-          name="asset"
-          initialValues={{ identityProvider: 'https://solidcommunity.net' }}
-          onFinish={login}
-        >
-          <Form.Item
-            label="Identity Provider"
-            name="identityProvider"
-            rules={[
-              {
-                required: true,
-                message: 'Please input an identity provider URL!'
-              }
-            ]}
+    <Layout style={{ minHeight: '100vh' }}>
+      <Content
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
+      >
+        <Card style={{ minWidth: 300 }}>
+          <Form
+            form={form}
+            layout="vertical"
+            name="login"
+            initialValues={{ identityProvider: 'https://solidcommunity.net' }}
+            onFinish={login}
           >
-            <Input />
-          </Form.Item>
-          <Form.Item {...formStyles.tailLayout}>
-            <Button type="primary" htmlType="submit" icon={<LoginOutlined />}>
-              Log In
-            </Button>
-          </Form.Item>
-        </Form>
-      )}
-    </OnboardingLayout>
+            <Form.Item
+              label="Identity Provider"
+              name="identityProvider"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input an identity provider URL!'
+                }
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item>
+              <Button type="primary" htmlType="submit" icon={<LoginOutlined />}>
+                Log In
+              </Button>
+            </Form.Item>
+          </Form>
+        </Card>
+      </Content>
+      <LayoutFooter />
+    </Layout>
   )
 }
-
-const UserDetails: React.FC = () => {
-  const { name, imageUrl, loading, error } = useUserDetails()
-  if (loading) {
-    return <Skeleton.Avatar active size={64} />
-  }
-  if (error) {
-    return <Result status="error" title="Error" subTitle={'' + error} />
-  }
-  const avatarProps = imageUrl
-    ? { src: imageUrl }
-    : name
-    ? { children: initials(name) }
-    : { icon: <UserOutlined /> }
-  return (
-    <div style={{ display: 'flex', alignItems: 'center' }}>
-      <Space>
-        <Avatar size={64} {...avatarProps} />{' '}
-        <span style={{ fontSize: 28 }}>{name}</span>
-      </Space>
-    </div>
-  )
-}
-
-const initials = (name: string) =>
-  name
-    .split(' ')
-    .map(s => s[0])
-    .join()
