@@ -14,7 +14,11 @@ import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import { PersistGate } from 'redux-persist/integration/react'
 import reportWebVitals from './reportWebVitals'
-import { AuthProvider } from './services/auth'
+import { AuthProvider, session } from './services/auth'
+import { initSoukai } from './services/soukai'
+import { QueryClient, QueryClientProvider } from 'react-query'
+
+initSoukai(session.fetch as any)
 
 const persistConfig = {
   key: 'root',
@@ -31,14 +35,18 @@ const store: Store<AppState, AppAction> = createStore(
 
 const persistor = persistStore(store as any)
 
+const queryClient = new QueryClient()
+
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
-      <Provider store={store}>
-        <PersistGate loading={<liquid-loading />} persistor={persistor}>
-          <App />
-        </PersistGate>
-      </Provider>
+      <QueryClientProvider client={queryClient}>
+        <Provider store={store}>
+          <PersistGate loading={<liquid-loading />} persistor={persistor}>
+            <App />
+          </PersistGate>
+        </Provider>
+      </QueryClientProvider>
     </AuthProvider>
   </React.StrictMode>,
   document.getElementById('root')

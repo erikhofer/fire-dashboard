@@ -14,7 +14,7 @@ export const Login: React.FC = () => {
   const login = ({ identityProvider }: any) => auth.login(identityProvider)
 
   if (auth.isLoggedIn) {
-    return <Redirect to="/" />
+    return <Redirect to="/projects" />
   }
 
   return (

@@ -10,7 +10,7 @@ export interface Auth {
   logout: () => Promise<void>
 }
 
-const session = new Session()
+export const session = new Session()
 
 const AuthContext = React.createContext<Auth>({} as Auth)
 
