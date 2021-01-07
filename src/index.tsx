@@ -17,6 +17,7 @@ import reportWebVitals from './reportWebVitals'
 import { AuthProvider, session } from './services/auth'
 import { initSoukai } from './services/soukai'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { ProjectProvider } from './services/project'
 
 initSoukai(session.fetch as any)
 
@@ -41,11 +42,13 @@ ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
       <QueryClientProvider client={queryClient}>
-        <Provider store={store}>
-          <PersistGate loading={<liquid-loading />} persistor={persistor}>
-            <App />
-          </PersistGate>
-        </Provider>
+        <ProjectProvider>
+          <Provider store={store}>
+            <PersistGate loading={<liquid-loading />} persistor={persistor}>
+              <App />
+            </PersistGate>
+          </Provider>
+        </ProjectProvider>
       </QueryClientProvider>
     </AuthProvider>
   </React.StrictMode>,

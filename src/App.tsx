@@ -21,9 +21,11 @@ import { About } from './pages/About'
 import { useAuth } from './services/auth'
 import { Login } from './pages/Login'
 import { Projects } from './pages/Projects'
+import { useProject } from './services/project'
 
 function App() {
   const { isLoggedIn } = useAuth()
+  const { project } = useProject()
 
   return (
     <Router>
@@ -33,8 +35,9 @@ function App() {
         <Route>
           <MainLayout>
             <Switch>
-              <Route path="/" exact component={Dashboard} />
               <Route path="/projects" component={Projects} />
+              {project ? null : <Redirect to="/projects" />}
+              <Route path="/" exact component={Dashboard} />
               <Route path="/assets/:id" component={AssetDetails} />
               <Route path="/assets" component={Assets} />
               <Route path="/liabilities/:id" component={LiabilityDetails} />

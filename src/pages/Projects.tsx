@@ -7,12 +7,19 @@ import { FolderOpenOutlined, PlusOutlined } from '@ant-design/icons'
 import { AsyncPlaceholder } from '../components/AsyncPlaceholder'
 import { useCreateProjectMutation } from '../mutations/project.mutations'
 import { renderDate } from '../utils/date'
+import { useProject } from '../services/project'
+import { Redirect } from 'react-router-dom'
 
 export const Projects: React.FC = () => {
   const result = useGetProjectListQuery()
+  const { project: currentProject, setProject } = useProject()
   const createMutation = useCreateProjectMutation()
 
   const createProject = () => createMutation.mutate('My Project')
+
+  if (currentProject) {
+    return <Redirect to="/" />
+  }
 
   if (result.data === undefined) {
     return <AsyncPlaceholder {...result} />
@@ -48,7 +55,12 @@ export const Projects: React.FC = () => {
                     {renderDate(project.updatedAt)}
                   </Descriptions.Item>
                 </Descriptions>
-                <Button icon={<FolderOpenOutlined />} type="primary" block>
+                <Button
+                  icon={<FolderOpenOutlined />}
+                  type="primary"
+                  block
+                  onClick={() => setProject(project)}
+                >
                   Open Project
                 </Button>
               </Card>
