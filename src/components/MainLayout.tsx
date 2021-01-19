@@ -1,63 +1,70 @@
 import React, { useState } from 'react'
-import { Layout, Menu, Divider, Alert } from 'antd'
+import { Layout, Menu, Alert, Space } from 'antd'
 import { DashboardOutlined, SettingOutlined } from '@ant-design/icons'
 import { LiabilityIcon, AssetIcon, IncomeIcon, ExpenseIcon } from './Icons'
 import { Link, useLocation } from 'react-router-dom'
+import { LayoutFooter } from './LayoutFooter'
+import { UserControl } from './UserControl'
+import { ProjectControl } from './ProjectControl'
+import { useProject } from '../services/project'
 
-const { Header, Content, Footer, Sider } = Layout
+const { Header, Content, Sider } = Layout
 
 export const MainLayout: React.FC = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false)
   const location = useLocation()
   const basePath = '/' + location.pathname.split('/')[1]
+  const { project } = useProject()
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
-      <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed}>
-        <div
-          style={{
-            height: 48,
-            margin: 16,
-            display: 'flex'
-          }}
-        >
-          <img
-            alt="Logo"
-            src={`${process.env.PUBLIC_URL}/logo192.png`}
-            style={{ height: '100%' }}
-          />
+      {project ? (
+        <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed}>
           <div
             style={{
-              color: 'white',
-              fontSize: 32,
-              marginLeft: 24,
-              letterSpacing: 3
+              height: 48,
+              margin: 16,
+              display: 'flex'
             }}
           >
-            FIRE
+            <img
+              alt="Logo"
+              src={`${process.env.PUBLIC_URL}/logo192.png`}
+              style={{ height: '100%' }}
+            />
+            <div
+              style={{
+                color: 'white',
+                fontSize: 32,
+                marginLeft: 24,
+                letterSpacing: 3
+              }}
+            >
+              FIRE
+            </div>
           </div>
-        </div>
-        <Menu theme="dark" selectedKeys={[basePath]} mode="inline">
-          <Menu.Item key="/" icon={<DashboardOutlined />}>
-            <Link to="/">Dashboard</Link>
-          </Menu.Item>
-          <Menu.Item key="/assets" icon={<AssetIcon />}>
-            <Link to="/assets">Assets</Link>
-          </Menu.Item>
-          <Menu.Item key="/liabilities" icon={<LiabilityIcon />}>
-            <Link to="/liabilities">Liabilities</Link>
-          </Menu.Item>
-          <Menu.Item key="/incomes" icon={<IncomeIcon />}>
-            <Link to="/incomes">Income</Link>
-          </Menu.Item>
-          <Menu.Item key="/expenses" icon={<ExpenseIcon />}>
-            <Link to="/expenses">Expenses</Link>
-          </Menu.Item>
-          <Menu.Item key="/settings" icon={<SettingOutlined />}>
-            <Link to="/settings">Settings</Link>
-          </Menu.Item>
-        </Menu>
-      </Sider>
+          <Menu theme="dark" selectedKeys={[basePath]} mode="inline">
+            <Menu.Item key="/" icon={<DashboardOutlined />}>
+              <Link to="/">Dashboard</Link>
+            </Menu.Item>
+            <Menu.Item key="/assets" icon={<AssetIcon />}>
+              <Link to="/assets">Assets</Link>
+            </Menu.Item>
+            <Menu.Item key="/liabilities" icon={<LiabilityIcon />}>
+              <Link to="/liabilities">Liabilities</Link>
+            </Menu.Item>
+            <Menu.Item key="/incomes" icon={<IncomeIcon />}>
+              <Link to="/incomes">Income</Link>
+            </Menu.Item>
+            <Menu.Item key="/expenses" icon={<ExpenseIcon />}>
+              <Link to="/expenses">Expenses</Link>
+            </Menu.Item>
+            <Menu.Item key="/settings" icon={<SettingOutlined />}>
+              <Link to="/settings">Settings</Link>
+            </Menu.Item>
+          </Menu>
+        </Sider>
+      ) : null}
       <Layout>
         <Header
           style={{
@@ -67,25 +74,18 @@ export const MainLayout: React.FC = ({ children }) => {
             justifyContent: 'flex-end'
           }}
         >
-          <Alert
-            message="This is a demo. Data will not be saved!"
-            type="warning"
-            showIcon
-          />
+          <Space size="large">
+            <Alert
+              message="This is a demo. Data will not be saved!"
+              type="warning"
+              showIcon
+            />
+            <ProjectControl />
+            <UserControl />
+          </Space>
         </Header>
         <Content>{children}</Content>
-        <Footer style={{ textAlign: 'center' }}>
-          FIRE Dashboard 0.0.0 <Divider type="vertical" />
-          <Link to="/about">About</Link>
-          <Divider type="vertical" /> Made with ❤ free and{' '}
-          <a
-            href="https://github.com/erikhofer/fire-dashboard"
-            target="blank"
-            rel="noopener"
-          >
-            open source
-          </a>
-        </Footer>
+        <LayoutFooter />
       </Layout>
     </Layout>
   )
