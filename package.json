@@ -21,7 +21,7 @@
     "workbox-strategies": "5.1.4",
     "workbox-streams": "5.1.4",
     "@ant-design/icons": "4.4.0",
-    "@craco/craco": "6.1.0",
+    "@craco/craco": "6.1.1",
     "antd": "4.11.2",
     "immer": "8.0.1",
     "liquid-loading": "1.0.0",
