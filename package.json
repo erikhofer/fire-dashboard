@@ -31,7 +31,7 @@
     "redux": "4.0.5",
     "redux-devtools-extension": "2.13.8",
     "redux-persist": "6.0.0",
-    "styled-jsx": "3.4.2",
+    "styled-jsx": "3.4.4",
     "typesafe-actions": "5.1.0",
     "uuid": "8.3.0"
   },
