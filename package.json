@@ -22,7 +22,7 @@
     "workbox-streams": "5.1.4",
     "@ant-design/icons": "4.6.2",
     "@craco/craco": "6.1.2",
-    "antd": "4.15.4",
+    "antd": "4.15.5",
     "immer": "8.0.4",
     "liquid-loading": "1.0.0",
     "moment": "2.29.1",
