@@ -6,7 +6,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-scripts": "4.0.3",
-    "typescript": "4.3.2",
+    "typescript": "4.3.4",
     "web-vitals": "1.1.2",
     "workbox-background-sync": "5.1.4",
     "workbox-broadcast-update": "5.1.4",
