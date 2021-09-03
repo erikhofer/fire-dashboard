@@ -20,7 +20,7 @@
     "workbox-routing": "6.2.4",
     "workbox-strategies": "6.2.4",
     "workbox-streams": "6.2.4",
-    "@ant-design/icons": "4.6.3",
+    "@ant-design/icons": "4.6.4",
     "@craco/craco": "6.2.0",
     "antd": "4.16.13",
     "immer": "9.0.5",
