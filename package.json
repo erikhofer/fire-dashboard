@@ -23,7 +23,7 @@
     "@ant-design/icons": "4.7.0",
     "@craco/craco": "6.4.2",
     "antd": "4.16.13",
-    "immer": "9.0.6",
+    "immer": "9.0.7",
     "liquid-loading": "1.0.0",
     "moment": "2.29.1",
     "react-redux": "7.2.6",
