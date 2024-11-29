@@ -27,7 +27,7 @@
     "liquid-loading": "1.0.0",
     "moment": "2.29.4",
     "react-redux": "7.2.6",
-    "react-router-dom": "5.3.0",
+    "react-router-dom": "7.0.1",
     "redux": "4.1.2",
     "redux-devtools-extension": "2.13.9",
     "redux-persist": "6.0.0",
